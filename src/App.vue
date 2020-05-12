@@ -1,6 +1,12 @@
 <template>
   <div id="app" class="container mt-5">
     <h1> Welcome to my Shop! </h1>
+    <navbar
+    :cart="cart"
+    :cartQty="cartQty"
+    :cartTotal="cartTotal"
+    @toggle="toggleSliderStatus"></navbar>
+    <price-slider :slider-status="sliderStatus" :maximum.sync="maximum"></price-slider>
     <product-list :maximum="maximum" :products="products" @add="addItem"></product-list>
   </div>
 </template>
@@ -8,25 +14,29 @@
 <script>
 
 import ProductList from "./components/ProductList";
+import PriceSlider from "./components/PriceSlider";
+import Navbar from "./components/Navbar";
 
 
 export default {
   name: "App",
   components: {
-
+    Navbar,
+    PriceSlider,
     ProductList
   },
   data: function(){
     return {
-      inputWidth: 60,
-      sliderStatus: false,
-      labelArr: ['font-weight-bold', 'mr-2'],
       maximum: 99,
+      sliderStatus: false,
       products: null,
       cart: []
     };
   },
   methods: {
+    toggleSliderStatus(){
+      this.sliderStatus = !this.sliderStatus;
+    },
     addItem: function(product) {
       var whichProduct;
       var existing = this.cart.filter(function(item, index) {
@@ -54,3 +64,5 @@ export default {
   }
 };
 </script>
+
+

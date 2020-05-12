@@ -7,11 +7,10 @@
     @leave="leave"
   >
     <div
-      class="row d-none mb-3 align-items-center"
-      v-for="(item, index) in products"
-      :key="item.id"
-      :data-index="index"
-    >
+        v-for="(item, index) in products"
+        :key="item.id"
+        :data-index="index"
+      >
       <div class="row align-items-center" v-if="item.price <= Number(maximum)">
         <div class="col-1 m-auto">
           <button class="btn btn-info" @click="$emit('add', item)">+</button>
