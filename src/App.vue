@@ -1,28 +1,56 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app" class="container mt-5">
+    <h1> Welcome to my Shop! </h1>
+    <product-list :maximum="maximum" :products="products" @add="addItem"></product-list>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+
+import ProductList from "./components/ProductList";
+
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+
+    ProductList
+  },
+  data: function(){
+    return {
+      inputWidth: 60,
+      sliderStatus: false,
+      labelArr: ['font-weight-bold', 'mr-2'],
+      maximum: 99,
+      products: null,
+      cart: []
+    };
+  },
+  methods: {
+    addItem: function(product) {
+      var whichProduct;
+      var existing = this.cart.filter(function(item, index) {
+        if(item.product.id == Number(product.id)){
+          whichProduct = index;
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      if(existing.length) {
+        this.cart[whichProduct].qty++;
+      } else {
+        this.cart.push({product: product, qty: 1})
+      }
+    }
+  },
+  mounted: function () {
+    fetch('https://hplussport.com/api/products/order/price')
+            .then(response => response.json())
+            .then(data => {
+              this.products = data;
+            })
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
