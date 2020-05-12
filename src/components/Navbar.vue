@@ -17,7 +17,7 @@
                             <span class="badge badge-pill badge-warning align-text-top mr-1"> {{ item.qty}}</span>
                             {{item.product.name}}
                             <b><price :value="item.qty*item.product.price"></price></b>
-                            <a href="#" @click.stop="deleteItem(index)"
+                            <a href="#" @click.stop="$emit('delete', index)"
                                class="badge badge-danger text-white">X</a>
                         </div>
                     </div>
