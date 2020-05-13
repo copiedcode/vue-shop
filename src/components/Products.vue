@@ -4,12 +4,10 @@
         <navbar
                 :cart="cart"
                 :cartQty="cartQty"
-                :cartTotal="cartTotal"
-                @toggle="toggleSliderStatus"
-                @delete="deleteItem">
+                :cartTotal="cartTotal" >
         </navbar>
         <price-slider :slider-status="sliderStatus" :maximum.sync="maximum"></price-slider>
-        <product-list :maximum="maximum" :products="products" @add="addItem"></product-list>
+        <product-list :maximum="maximum" :products="products"></product-list>
     </div>
 </template>
 
