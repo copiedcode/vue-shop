@@ -11,7 +11,7 @@
         :key="item.id"
         :data-index="index"
       >
-      <div class="row align-items-center" v-if="item.price <= Number(maximum)">
+      <div class="row d-flex mb-3 align-items-center" v-if="item.price <= Number(maximum)">
         <div class="col-1 m-auto">
           <button class="btn btn-info" @click="$parent.$emit('add', item)">+</button>
         </div>

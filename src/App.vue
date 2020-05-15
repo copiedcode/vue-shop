@@ -4,13 +4,12 @@
         :cart="cart"
         :cartQty="cartQty"
         :cartTotal="cartTotal"
-        @delete="deleteItem"
-        @add="addItem"
         :sliderStatus="sliderStatus"
         :maximum="maximum"
         :products="products"
-        @toggle="toggleSliderStatus" >
-
+        @toggle="toggleSliderStatus"
+        @delete="deleteItem"
+        @add="addItem">
     </router-view>
 
 
@@ -19,13 +18,8 @@
 
 <script>
 
-
-
 export default {
   name: "App",
-  components: {
-
-  },
   data: function(){
     return {
       maximum: 99,

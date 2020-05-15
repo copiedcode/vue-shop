@@ -21,6 +21,7 @@
                                class="badge badge-danger text-white">X</a>
                         </div>
                     </div>
+                    <router-link class="btn btn-sm btn-outline-warning text-dark float-right mr-4 m-2 font-weight-bold" to="/checkout">Checkout</router-link>
                 </div>
 
             </div>
