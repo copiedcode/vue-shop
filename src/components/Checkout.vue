@@ -22,7 +22,7 @@
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button @click="$emit('add', item.product)" class="btn btn-info">+</button>
-                        <button @click="$emit('add', index)" class="btn btn-outline-info">-</button>
+                        <button @click="$emit('delete', index)" class="btn btn-outline-info">-</button>
                     </div>
                 </td>
                 <th scope="row">{{ item.product.name }}</th>

@@ -1,37 +1,30 @@
 <template>
   <div id="app" class="container mt-5">
-    <checkout :cart="cart"
-              :cartQty="cartQty"
-              :cartTotal="cartTotal"
-              @delete="deleteItem"
-              @add="addItem">
+    <router-view
+        :cart="cart"
+        :cartQty="cartQty"
+        :cartTotal="cartTotal"
+        @delete="deleteItem"
+        @add="addItem"
+        :sliderStatus="sliderStatus"
+        :maximum="maximum"
+        :products="products"
+        @toggle="toggleSliderStatus" >
 
-    </checkout>
-    <products
-            :cart="cart"
-            :cartQty="cartQty"
-            :cartTotal="cartTotal"
-            :sliderStatus="sliderStatus"
-            :maximum="maximum"
-            :products="products"
-            @toggle="toggleSliderStatus"
-            @delete="deleteItem"
-            @add="addItem"
-    ></products>
+    </router-view>
+
+
   </div>
 </template>
 
 <script>
 
-import Products from "./components/Products";
-import Checkout from "./components/Checkout";
 
 
 export default {
   name: "App",
   components: {
-    Checkout,
-    Products
+
   },
   data: function(){
     return {
