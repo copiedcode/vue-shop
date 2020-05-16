@@ -9,11 +9,13 @@
         <label for="nameFilter" class="font-weight-bold mr-2">Name</label>
         <input
           type="text"
-          class="form-control"
-          style="width: 80%"
+          class="form-control d-inline"
+          style="width: 70%"
           id="nameFilter"
           aria-describedby="nameFilter"
           placeholder="What are you looking for?"
+          v-model="filterText"
+          @change="$emit('update:searchProducts', filterText)"
         />
       </div>
       <div class=" align-items-center" :class="sliderState">
@@ -44,7 +46,8 @@ export default {
   name: "filters",
   data: function() {
     return {
-      maxAmount: 99
+      maxAmount: 99,
+      filterText: ''
     };
   },
   props: ["filterStatus"],

@@ -25,7 +25,8 @@ export default {
       maximum: 99,
       filterStatus: false,
       products: null,
-      cart: []
+      cart: [],
+      textFilter: ''
     };
   },
   computed: {
