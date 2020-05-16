@@ -15,7 +15,7 @@
           aria-describedby="nameFilter"
           placeholder="What are you looking for?"
           v-model="filterText"
-          @change="$emit('update:searchProducts', filterText)"
+          @keyup="$emit('update:searchProducts', filterText)"
         />
       </div>
       <div class=" align-items-center" :class="sliderState">
