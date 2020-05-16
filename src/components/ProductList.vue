@@ -11,7 +11,7 @@
         :key="item.id"
         :data-index="index"
       >
-      <div class="row d-flex mb-3 align-items-center" v-if="item.price <= Number(maximum)">
+      <div class="row d-flex mt-4 align-items-center" v-if="item.price <= Number(maximum)">
         <div class="col-1 m-auto">
           <button class="btn btn-info" @click="$parent.$emit('add', item)">+</button>
         </div>
@@ -21,7 +21,7 @@
         <div class="col">
           <h3 class="text-info">{{ item.name }}</h3>
           <p class="mb-0">{{ item.description }}</p>
-          <div class="h5 float-right">
+          <div class="h4 float-right">
             <price :value="Number(item.price)"></price>
           </div>
         </div>
@@ -46,14 +46,14 @@ export default {
       var delay = el.dataset.index * 100;
       setTimeout(function() {
         el.className =
-          "row d-flex mb-3 align-items-center animate__animated animate__fadeInRight";
+          "row d-flex align-items-center animate__animated animate__fadeInRight";
       }, delay);
     },
     leave: function(el) {
       var delay = el.dataset.index * 100;
       setTimeout(function() {
         el.className =
-          "row d-flex mb-3 align-items-center animate__animated animate__fadeOutRight";
+          "row d-flex align-items-center animate__animated animate__fadeOutRight";
       }, delay);
     }
   }

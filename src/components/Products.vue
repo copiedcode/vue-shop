@@ -6,14 +6,14 @@
                 :cartQty="cartQty"
                 :cartTotal="cartTotal" >
         </navbar>
-        <price-slider :slider-status="sliderStatus" :maximum.sync="maximum"></price-slider>
+        <filters :filter-status="filterStatus"></filters>
         <product-list :maximum="maximum" :products="products"></product-list>
     </div>
 </template>
 
 <script>
     import Navbar from "./Navbar";
-    import PriceSlider from "./PriceSlider";
+    import Filters from "./Filters";
     import ProductList from "./ProductList";
 
     export default {
@@ -24,12 +24,12 @@
             "cart",
             "cartQty",
             "cartTotal",
-            "sliderStatus",
+            "filterStatus",
             "sliderState"
         ],
         components: {
             Navbar,
-            PriceSlider,
+            Filters,
             ProductList
         }
     }

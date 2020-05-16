@@ -4,10 +4,10 @@
         :cart="cart"
         :cartQty="cartQty"
         :cartTotal="cartTotal"
-        :sliderStatus="sliderStatus"
-        :maximum="maximum"
+        :filterStatus="filterStatus"
+        :maximum.sync="maximum"
         :products="products"
-        @toggle="toggleSliderStatus"
+        @toggle="toggleFilterStatus"
         @delete="deleteItem"
         @add="addItem">
     </router-view>
@@ -23,7 +23,7 @@ export default {
   data: function(){
     return {
       maximum: 99,
-      sliderStatus: false,
+      filterStatus: false,
       products: null,
       cart: []
     };
@@ -45,8 +45,8 @@ export default {
     }
   },
   methods: {
-    toggleSliderStatus(){
-      this.sliderStatus = !this.sliderStatus;
+    toggleFilterStatus(){
+      this.filterStatus = !this.filterStatus;
     },
     addItem: function(product) {
       var whichProduct;

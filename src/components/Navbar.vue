@@ -2,7 +2,7 @@
     <nav class="navbar navbar-light fixed-top" >
         <div class="navbar-text ml-auto d-flex" >
             <button class="btn btn-sm btn-outline-success" @click="$parent.$emit('toggle')">
-                <font-awesome-icon icon="dollar-sign"></font-awesome-icon>
+                <font-awesome-icon icon="filter"></font-awesome-icon>
             </button>
             <div class="dropdown ml-2" v-if="cart.length>0">
                 <button id="cartDropdown" class="btn btn-success btn-sm dropdown-toggle"

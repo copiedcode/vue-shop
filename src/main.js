@@ -9,10 +9,11 @@ import "animate.css/animate.css";
 
 import {
   faShoppingCart,
-  faDollarSign
+  faDollarSign,
+  faFilter
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faShoppingCart, faDollarSign);
+library.add(faShoppingCart, faDollarSign, faFilter);
 
 import Products from "./components/Products";
 import Checkout from "./components/Checkout";
