@@ -16,6 +16,7 @@ import {
 library.add(faShoppingCart, faDollarSign, faFilter);
 
 import Products from "./components/Products";
+import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 
 Vue.use(VueRouter);
@@ -26,6 +27,10 @@ const router = new VueRouter({
     {
       path: "*",
       component: Products
+    },
+    {
+      path: "/cart",
+      component: Cart
     },
     {
       path: "/checkout",
