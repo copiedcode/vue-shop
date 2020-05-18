@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Your Cart</h1>
-        <p v-if="!cart.length">No products in the cart. Go back and explore all of our products.</p>
+        <h1 class="pb-3">Your Cart</h1>
+        <h4  class="pb-3" v-if="!cart.length">No products in the cart. Go back and explore all of our products.</h4>
 
         <table class="table table-hover" v-if="cart.length">
             <caption class="text-right h3">
@@ -34,7 +34,7 @@
             </tbody>
         </table>
         <router-link class="btn btn-outline-warning text-dark font-weight-bold" to="/">Back to the Shop</router-link>
-        <router-link class="btn btn-outline-success text-dark font-weight-bold float-right" to="/checkout">To checkout</router-link>
+        <router-link v-if="cart.length" class="btn btn-outline-success text-dark font-weight-bold float-right" to="/checkout">To checkout</router-link>
     </div>
 </template>
 
