@@ -39,11 +39,11 @@
         </tbody>
       </table>
     </div>
-    <div id="customerForm" class="jumbotron">
+    <div id="customerForm" class="jumbotron" v-if="!finishedForm">
       <h4 class="display-5">Please fill out the following informations:</h4>
       <p class="lead">To process your order, we need to know a few details.</p>
       <hr class="my-4" />
-      <form>
+      <form @submit.prevent="saveCustomer">
         <div class="form-group">
           <label for="checkoutAnrede" >Anrede</label>
           <select class="form-control" id="checkoutAnrede" v-model="customer.gender">
@@ -181,10 +181,16 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary" @submit="saveCustomer">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
     </div>
+    <div class="jumbotron" v-if="finishedForm">
+      <h1 class="display-5">Please confirm your iformations:</h1>
+      <p class="lead">That is the last step, we promise.</p>
+      <hr class="my-4">
+      <p>Hallo{{ this.customer.firstName }}</p>
 
+    </div>
     <router-link
       class="btn btn-outline-warning text-dark font-weight-bold"
       to="/cart"
@@ -227,13 +233,15 @@ export default {
     };
   },
   methods: {
-    saveCustomer(){
+    saveCustomer: function(){
       if(this.oneAdress){
         this.billCountry = this.shipCountry;
         this.billZipcode = this.shipZipcode;
         this.billCity = this.shipCity;
         this.billCountry = this.shipCountry;
       }
+      this.finishedForm = true;
+
     }
   }
 };
