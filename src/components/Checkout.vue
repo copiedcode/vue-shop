@@ -61,6 +61,7 @@
               class="form-control"
               placeholder="First name"
               v-model="customer.firstName"
+              required
             />
           </div>
           <div class="col">
@@ -71,6 +72,7 @@
               class="form-control"
               placeholder="Last name"
               v-model="customer.lastName"
+              required
             />
           </div>
         </div>
@@ -83,6 +85,7 @@
             id="checkoutAdressShipping"
             placeholder="Adress"
             v-model="customer.shipAdress"
+            required
           />
 
           <div class="form-row">
@@ -94,6 +97,7 @@
                 class="form-control"
                 placeholder="Zipcode"
                 v-model="customer.shipZipcode"
+                required
               />
             </div>
             <div class="col">
@@ -104,6 +108,7 @@
                 class="form-control"
                 placeholder="City"
                 v-model="customer.shipCity"
+                required
               />
             </div>
           </div>
@@ -112,6 +117,7 @@
             class="custom-select my-1 mr-sm-2"
             id="checkoutCountryShipping"
             v-model="customer.shipCountry"
+            required
           >
             <option value="austria">Austria</option>
             <option value="germany">Germany</option>
@@ -175,7 +181,7 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" @submit="saveCustomer">Submit</button>
       </form>
     </div>
 
@@ -222,7 +228,12 @@ export default {
   },
   methods: {
     saveCustomer(){
-
+      if(this.oneAdress){
+        this.billCountry = this.shipCountry;
+        this.billZipcode = this.shipZipcode;
+        this.billCity = this.shipCity;
+        this.billCountry = this.shipCountry;
+      }
     }
   }
 };
