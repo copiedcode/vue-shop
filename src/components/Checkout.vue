@@ -16,6 +16,7 @@
           </p>
         </caption>
 
+      <!-- PRODUCT REVIEW -->
         <thead>
           <tr>
             <th scope="col">Item</th>
@@ -38,14 +39,14 @@
         </tbody>
       </table>
     </div>
-    <div class="jumbotron">
+    <div id="customerForm" class="jumbotron">
       <h4 class="display-5">Please fill out the following informations:</h4>
       <p class="lead">To process your order, we need to know a few details.</p>
       <hr class="my-4" />
       <form>
         <div class="form-group">
-          <label for="checkoutAnrede">Anrede</label>
-          <select class="form-control" id="checkoutAnrede">
+          <label for="checkoutAnrede" >Anrede</label>
+          <select class="form-control" id="checkoutAnrede" v-model="customer.gender">
             <option>Frau</option>
             <option>Herr</option>
             <option>Divers</option>
@@ -59,6 +60,7 @@
               id="checkoutFirstName"
               class="form-control"
               placeholder="First name"
+              v-model="customer.firstName"
             />
           </div>
           <div class="col">
@@ -68,17 +70,19 @@
               id="checkoutLastName"
               class="form-control"
               placeholder="Last name"
+              v-model="customer.lastName"
             />
           </div>
         </div>
-          <h5>Shipping Adress:</h5>
+        <h5>Shipping Adress:</h5>
         <div class="form-group">
           <label for="checkoutAdressShipping">Adress</label>
           <input
-            type="password"
+            type="text"
             class="form-control"
             id="checkoutAdressShipping"
             placeholder="Adress"
+            v-model="customer.shipAdress"
           />
 
           <div class="form-row">
@@ -89,6 +93,7 @@
                 id="checkoutZipcodeShipping"
                 class="form-control"
                 placeholder="Zipcode"
+                v-model="customer.shipZipcode"
               />
             </div>
             <div class="col">
@@ -98,6 +103,7 @@
                 id="checkoutCityShipping"
                 class="form-control"
                 placeholder="City"
+                v-model="customer.shipCity"
               />
             </div>
           </div>
@@ -105,6 +111,7 @@
           <select
             class="custom-select my-1 mr-sm-2"
             id="checkoutCountryShipping"
+            v-model="customer.shipCountry"
           >
             <option value="austria">Austria</option>
             <option value="germany">Germany</option>
@@ -112,24 +119,26 @@
           </select>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2 mb-3">
-          <input v-model="oneAdress"
+          <input
+            v-model="oneAdress"
             type="checkbox"
             class="custom-control-input"
             id="checkoutSameBilling"
             checked
           />
-          <label  class="custom-control-label" for="checkoutSameBilling">
-              Rechnungsadresse entspricht Lieferadresse.
+          <label class="custom-control-label" for="checkoutSameBilling">
+            Rechnungsadresse entspricht Lieferadresse.
           </label>
         </div>
         <div v-if="!oneAdress" class="form-group ">
           <h5>Billing Adress:</h5>
           <label for="checkoutAdressBilling">Adress</label>
           <input
-            type="password"
+            type="text"
             class="form-control"
             id="checkoutAdressBilling"
             placeholder="Adress"
+            v-model="customer.billAdress"
           />
 
           <div class="form-row">
@@ -140,6 +149,7 @@
                 id="checkoutZipcodeBilling"
                 class="form-control"
                 placeholder="Zipcode"
+                v-model="customer.billZipcode"
               />
             </div>
             <div class="col">
@@ -149,6 +159,7 @@
                 id="checkoutCityBilling"
                 class="form-control"
                 placeholder="City"
+                v-model="customer.billCity"
               />
             </div>
           </div>
@@ -156,6 +167,7 @@
           <select
             class="custom-select my-1 mr-sm-2"
             id="checkoutCountryBilling"
+            v-model="customer.billCountry"
           >
             <option value="austria">Austria</option>
             <option value="germany">Germany</option>
@@ -172,7 +184,8 @@
       to="/cart"
       >Back to the Cart</router-link
     >
-    <router-link
+
+    <router-link v-if="finishedForm"
       class="btn btn-outline-success text-dark font-weight-bold float-right"
       to="/paying"
       >Proceed</router-link
@@ -188,12 +201,30 @@ export default {
   components: {
     Price
   },
-    data: function() {
-      return {
-        oneAdress: true
-    }
+  data: function() {
+    return {
+      finishedForm: false,
+      oneAdress: true,
+      customer: {
+        gender: "",
+        firstName: "",
+        lastName: "",
+        shipAdress: "",
+        shipZipcode: "",
+        shipCity: "",
+        shipCountry: "",
+        billAdress: "",
+        billZipcode: "",
+        billCity: "",
+        billCountry: ""
+      }
+    };
+  },
+  methods: {
+    saveCustomer(){
 
     }
+  }
 };
 </script>
 
