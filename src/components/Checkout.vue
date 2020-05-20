@@ -145,6 +145,7 @@
             id="checkoutAdressBilling"
             placeholder="Adress"
             v-model="customer.billAdress"
+            required
           />
 
           <div class="form-row">
@@ -156,6 +157,7 @@
                 class="form-control"
                 placeholder="Zipcode"
                 v-model="customer.billZipcode"
+                required
               />
             </div>
             <div class="col">
@@ -166,6 +168,7 @@
                 class="form-control"
                 placeholder="City"
                 v-model="customer.billCity"
+                required
               />
             </div>
           </div>
@@ -174,6 +177,7 @@
             class="custom-select my-1 mr-sm-2"
             id="checkoutCountryBilling"
             v-model="customer.billCountry"
+            required
           >
             <option value="austria">Austria</option>
             <option value="germany">Germany</option>
@@ -184,6 +188,8 @@
         <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
     </div>
+
+
     <div class="jumbotron"  v-else>
       <h4 class="display-5">Please confirm your data:</h4>
       <p class="lead">That is the last step, we promise.</p>
@@ -202,7 +208,8 @@
       <p class="my-1 text-capitalize">{{ this.customer.billCountry }}</p>
       </div>
       <p v-else> Same as shipping address.</p>
-
+      <hr style="margin-right: 70%">
+      <button type="button" class="mt-2 btn btn-warning btn-sm" @click="finishedForm = !finishedForm">Something wrong ? Click here to change.</button>
     </div>
     <router-link
       class="btn btn-outline-warning text-dark font-weight-bold"
@@ -211,7 +218,7 @@
     >
 
     <router-link v-if="finishedForm"
-      class="btn btn-outline-success text-dark font-weight-bold float-right"
+      class="btn btn-success text-dark font-weight-bold float-right"
       to="/paying"
       >Proceed</router-link
     >
