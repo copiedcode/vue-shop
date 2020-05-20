@@ -184,11 +184,24 @@
         <button type="submit" class="btn btn-primary" >Submit</button>
       </form>
     </div>
-    <div class="jumbotron" v-if="finishedForm">
-      <h1 class="display-5">Please confirm your iformations:</h1>
+    <div class="jumbotron"  v-else>
+      <h4 class="display-5">Please confirm your data:</h4>
       <p class="lead">That is the last step, we promise.</p>
       <hr class="my-4">
-      <p>Hallo{{ this.customer.firstName }}</p>
+      <p class="my-1"> <b>{{this.customer.gender }} {{ this.customer.firstName }} {{this.customer.lastName}}</b></p>
+      <hr style="margin-right: 70%">
+      <h6 class="text-uppercase">Shipping Adress:</h6>
+      <p class="my-1">{{ this.customer.shipAdress }}</p>
+      <p class="my-1">{{ this.customer.shipZipcode }}, {{ this.customer.shipCity }}</p>
+      <p class="my-1 text-capitalize">{{ this.customer.shipCountry }}</p>
+      <hr style="margin-right: 70%">
+      <h6 class="text-uppercase">Billing Adress:</h6>
+      <div v-if="!oneAdress">
+      <p class="my-1">{{ this.customer.billAdress }}</p>
+      <p class="my-1">{{ this.customer.billZipcode }}, {{ this.customer.billCity }}</p>
+      <p class="my-1 text-capitalize">{{ this.customer.billCountry }}</p>
+      </div>
+      <p v-else> Same as shipping address.</p>
 
     </div>
     <router-link
@@ -234,14 +247,7 @@ export default {
   },
   methods: {
     saveCustomer: function(){
-      if(this.oneAdress){
-        this.billCountry = this.shipCountry;
-        this.billZipcode = this.shipZipcode;
-        this.billCity = this.shipCity;
-        this.billCountry = this.shipCountry;
-      }
       this.finishedForm = true;
-
     }
   }
 };
