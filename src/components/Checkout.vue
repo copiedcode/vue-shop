@@ -192,7 +192,7 @@
 
     <div class="jumbotron"  v-else>
       <h4 class="display-5">Please confirm your data:</h4>
-      <p class="lead">That is the last step, we promise.</p>
+      <p class="lead">If you notice a mistake, click on the button bellow.</p>
       <hr class="my-4">
       <p class="my-1"> <b>{{this.customer.gender }} {{ this.customer.firstName }} {{this.customer.lastName}}</b></p>
       <hr style="margin-right: 70%">
@@ -219,8 +219,9 @@
 
     <router-link v-if="finishedForm"
       class="btn btn-success text-dark font-weight-bold float-right"
-      to="/paying"
-      >Proceed</router-link
+      to="/payment"
+
+      >Proceed to Payment</router-link
     >
   </div>
 </template>
@@ -229,27 +230,14 @@
 import Price from "./Price";
 export default {
   name: "Checkout",
-  props: ["cart", "cartTotal"],
+  props: ["cart", "cartTotal", "customer"],
   components: {
     Price
   },
   data: function() {
     return {
       finishedForm: false,
-      oneAdress: true,
-      customer: {
-        gender: "",
-        firstName: "",
-        lastName: "",
-        shipAdress: "",
-        shipZipcode: "",
-        shipCity: "",
-        shipCountry: "",
-        billAdress: "",
-        billZipcode: "",
-        billCity: "",
-        billCountry: ""
-      }
+      oneAdress: true
     };
   },
   methods: {

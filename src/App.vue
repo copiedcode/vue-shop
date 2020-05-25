@@ -7,6 +7,7 @@
         :filterStatus="filterStatus"
         :maximum.sync="maximum"
         :products="products"
+        :customer="customer"
         @toggle="toggleFilterStatus"
         @delete="deleteItem"
         @add="addItem">
@@ -26,7 +27,20 @@ export default {
       filterStatus: false,
       products: null,
       cart: [],
-      textFilter: ''
+      textFilter: '',
+      customer: {
+        gender: "",
+        firstName: "",
+        lastName: "",
+        shipAdress: "",
+        shipZipcode: "",
+        shipCity: "",
+        shipCountry: "",
+        billAdress: "",
+        billZipcode: "",
+        billCity: "",
+        billCountry: ""
+      }
     };
   },
   computed: {
