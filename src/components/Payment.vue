@@ -5,11 +5,13 @@
                 class="d-block text-success font-weight-light"
                 :value="Number(cartTotal)"
         ></price></h3>
+        <p><b>Thank you, {{ customer.firstName }}.</b></p>
 
-        <router-link class="btn btn-success text-dark font-weight-bold float-right" to="/">
+
+
+        <router-link class="btn btn-success text-dark font-weight-bold my-4 " to="/">
             Back to the Shop
         </router-link>
-        <p>{{ customer.firstName }}</p>
     </div>
 </template>
 
@@ -18,7 +20,7 @@
     export default {
         name: "Payment",
         components: {Price},
-        props: ["cartTotal", "customer"]
+        props: ["cart","cartTotal", "customer"]
 
 
     }

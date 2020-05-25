@@ -10,7 +10,8 @@
         :customer="customer"
         @toggle="toggleFilterStatus"
         @delete="deleteItem"
-        @add="addItem">
+        @add="addItem"
+        @clear="clearCart">
     </router-view>
 
 
@@ -86,6 +87,10 @@ export default {
       } else {
         this.cart.splice(id,1);
       }
+    },
+    clearCart: function() {
+      alert("hi");
+      this.cart.removeAll();
     }
   },
   mounted: function () {
